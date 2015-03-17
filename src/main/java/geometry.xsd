@@ -7,22 +7,7 @@
 
   <xs:element name="Shape" type="Shape_Type"/>
 
-  <xs:element name="Shape_List" type="Shape_List"/>
-
-  <xs:complexType name="Shape_List">
-    <xs:sequence>
-      <xs:element name="Shapes" type="Shape_Type" minOccurs="0" maxOccurs="unbounded"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="Shape_Type" abstract="true">
-    <xs:sequence>
-      <xs:element name="ID" type="xs:string" minOccurs="0"/>
-      <xs:element name="Color" type="xs:string" minOccurs="0"/>
-      <xs:element name="Date_Created" type="xs:dateTime" minOccurs="0"/>
-      <xs:element name="Description" type="xs:string" minOccurs="0"/>
-    </xs:sequence>
-  </xs:complexType>
+  <xs:element name="Shape_List" type="Shape_List_Type"/>
 
   <xs:complexType name="circle">
     <xs:complexContent>
@@ -33,6 +18,16 @@
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="Shape_Type" abstract="true">
+    <xs:sequence>
+      <xs:element name="ID" type="xs:string" minOccurs="0"/>
+      <xs:element name="Color" type="xs:string" minOccurs="0"/>
+      <xs:element name="Date_Created" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="Area" type="xs:double" minOccurs="0"/>
+      <xs:element name="Description" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
   </xs:complexType>
 
   <xs:complexType name="Point_Type">
@@ -68,6 +63,18 @@
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="Shape_List_Type">
+    <xs:sequence>
+      <xs:element name="Shapes" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element ref="Shape" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
   </xs:complexType>
 </xs:schema>
 
