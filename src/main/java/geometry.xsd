@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="Point" type="Point_Type"/>
+
+  <xs:element name="Polygon" type="Polygon_Type"/>
+
+  <xs:element name="Shape" type="Shape_Type"/>
+
+  <xs:element name="Shape_List" type="Shape_List"/>
+
+  <xs:complexType name="Shape_List">
+    <xs:sequence>
+      <xs:element name="Shapes" type="Shape_Type" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Shape_Type" abstract="true">
+    <xs:sequence>
+      <xs:element name="ID" type="xs:string" minOccurs="0"/>
+      <xs:element name="Color" type="xs:string" minOccurs="0"/>
+      <xs:element name="Date_Created" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="Description" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="circle">
+    <xs:complexContent>
+      <xs:extension base="Shape_Type">
+        <xs:sequence>
+          <xs:element name="radius" type="xs:double"/>
+          <xs:element name="center" type="Point_Type" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="Point_Type">
+    <xs:sequence>
+      <xs:element name="x" type="xs:double"/>
+      <xs:element name="y" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="rectangle">
+    <xs:complexContent>
+      <xs:extension base="Shape_Type">
+        <xs:sequence>
+          <xs:element name="width" type="xs:double"/>
+          <xs:element name="height" type="xs:double"/>
+          <xs:element name="center" type="Point_Type" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="Polygon_Type">
+    <xs:complexContent>
+      <xs:extension base="Shape_Type">
+        <xs:sequence>
+          <xs:element name="Points" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element ref="Point" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>
+
