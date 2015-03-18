@@ -61,10 +61,10 @@ public class JaxbTransformer {
 		return transformer;
 	}
 
-	public Shape toShape(String xmlString) throws Exception {
+	public ShapeList toShape(String xmlString) throws Exception {
 		StringReader reader = new StringReader(xmlString);
 		JAXBContext context = JaxbTransformer.getJaxBContext();
-		Shape shape = (Shape) context.createUnmarshaller().unmarshal(reader);
+		ShapeList shape = (ShapeList) context.createUnmarshaller().unmarshal(reader);
 		return shape;
 	}
 

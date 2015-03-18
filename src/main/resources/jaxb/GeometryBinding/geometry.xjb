@@ -1,0 +1,14 @@
+<jaxb:bindings version="2.0"  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc" jaxb:extensionBindingPrefixes="xjc">
+
+	<jaxb:bindings schemaLocation="geometry.xsd">
+		<jaxb:globalBindings>
+			<jaxb:serializable/>
+			<!--xjc:javaType name="java.util.Date" xmlType="xs:dateTime" adapter="org.austinjug.jaxb.util.TimeConverter"/-->
+			<jaxb:generateIsSetMethod value="true"/>
+			<!-- xjc:javaType name="java.awt.Color" xmlType="Color" adapter="org.austinjug.jaxb.util.ColorAdapter"/-->
+		</jaxb:globalBindings>
+		<jaxb:schemaBindings>
+		</jaxb:schemaBindings>
+	</jaxb:bindings>
+	
+</jaxb:bindings>
